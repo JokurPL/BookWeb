@@ -5,6 +5,8 @@
         <div class="row mx-auto">
             <div class="col-sm-4 center-block">
                 <img src="../uploads/{{$book->img}}" class="img-fluid" style="margin-top: 1rem;" height="60%" alt="Zdjęcie {{$book->title}}"/>
+                <br>
+                
                 <a href="{{ URL::previous() }}" style="margin: 1rem;" class="btn btn-primary btn-lg">Powrót</a>
             </div>
             <div class="col-sm-8 text-center" style="margin-top: 1rem;">
@@ -62,10 +64,28 @@
                         <div class="d-inline-block" style="margin-right: 1rem">
                             <button style="cursor: pointer;" class="btn btn-danger disabled"><p><b><i class="material-icons">thumb_down</i></b></p>{{ $d_votes }}</button>
                         </div>
-
+                        
                     @endif
+                    
+                    @if($u_votes > 0)
+                    <h4 class="text-center"><strong>{{ round(($u_votes/($d_votes + $u_votes))*100)}}%</strong> osób ta książka się podobała</h4>
+                <div class="progress" style="height: 3rem;">
 
+                    <div class="progress-bar" style="width: {{ round(($u_votes/($d_votes + $u_votes))*100)}}%;" role="progressbar" aria-valuenow="{{round(($u_votes/($d_votes + $u_votes))*100)}}" aria-valuemin="0" aria-valuemax="100">{{round(($u_votes/($d_votes + $u_votes))*100)}}%</div>
+                </div>
+                    @elseif($u_votes === 0 && $d_votes > 0)
+                    <h4 class="text-center"><strong>0%</strong> osób ta książka się podobała</h4>
+                <div class="progress" style="height: 3rem;">
 
+                    <div class="progress-bar" style="width: 0%;" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
+                </div>
+                    @else 
+                    <h4 class="text-center"><strong>Brak wystarczających ilości danych</h4>
+                <div class="progress" style="height: 3rem;">
+
+                    <div class="progress-bar" style="width: 0%;" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                    @endif
                 @if(!Auth::guest())
                 @if(Auth::user()->roles[0]->name === 'Administrator' || Auth::user()->roles[0]->name === 'Redaktor')
                 <div style="text-align: right; margin: 1rem;">
@@ -90,6 +110,7 @@
                     </div>
 
                 @endif
+                
             </div>
             <hr>
             <h1>Komentarze</h1>

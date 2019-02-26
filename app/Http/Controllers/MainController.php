@@ -22,7 +22,7 @@ class MainController extends Controller
 
 
     public function index() {
-        $books = Books::paginate(5);
+        $books = Books::paginate(6);
         return view('books.welcome', compact('books'));
     }
 
@@ -45,6 +45,7 @@ class MainController extends Controller
         foreach ($downvote as $vote) {
             $l_dvotes += $vote->vote;
         }
+       
         $u_votes = 0;
         $d_votes = 0;
         $ok_up = false;
@@ -70,6 +71,7 @@ class MainController extends Controller
                     $ok_d = false;
                 }
             }
+
         }
         return view('books.book', compact('book', 'roles','comments','u_votes', 'ok_up', 'ok_d', 'd_votes', 'l_uvotes', 'l_dvotes'));
     }
