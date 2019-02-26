@@ -4,28 +4,23 @@
         {{--<h1 class="text-center" style="margin: 1rem;">Popularne książki</h1>--}}
         {{--<hr>--}}
         {{--</div>--}}
-        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-            <ol class="carousel-indicators">
-                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-            </ol>
+        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img class="d-block w-100" src="https://i.imgur.com/KXt6u8i.png" alt="First slide">
+                <div class="carousel-item active"  >
+                <img src="https://i.imgur.com/KXt6u8i.png" class="d-block w-100"   alt="...">
                 </div>
                 <div class="carousel-item">
-                    <img class="d-block w-100" src="https://i.imgur.com/QxHKLlu.png" alt="Second slide">
+                <img src="https://i.imgur.com/jk88jJ7.jpg" class="d-block w-100" alt="...">
                 </div>
                 <div class="carousel-item">
-                    <img class="d-block w-100" src="https://i.imgur.com/jk88jJ7.jpg" alt="Third slide">
+                <img src="https://i.imgur.com/QxHKLlu.png" class="d-block w-100" alt="...">
                 </div>
             </div>
-            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 <span class="sr-only">Previous</span>
             </a>
-            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 <span class="sr-only">Next</span>
             </a>

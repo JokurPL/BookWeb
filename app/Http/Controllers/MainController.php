@@ -10,6 +10,7 @@ use App\Regulamin;
 use App\Roles;
 use App\Upvote;
 use App\User;
+use App\DownVote;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -86,11 +87,14 @@ class MainController extends Controller
     }
 
     public function panel() {
+        $glosy = 0;
+        $up = Upvote::all();
+        $down = DownVote::all();
         $books = Books::paginate(10);
         $categories = Categories::paginate(10);
         $author = Author::paginate(10);
         $comments = Comments::paginate(10);
-        return view('books.panel', compact('books', 'categories', 'author', 'comments'));
+        return view('books.panel', compact('books', 'categories', 'author', 'comments','up','down', 'glosy'));
     }
 
     public function all_books() {

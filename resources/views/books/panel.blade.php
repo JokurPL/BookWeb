@@ -26,18 +26,46 @@
         </thead>
         <tbody>
         @foreach($books as $book)
+        
             <tr>
                 <th class="text-center">{{$book->id}}</th>
-                <td>{{$book->title}}</td>
-                <td><details style="cursor: pointer">
-                        <summary>Opis (kliknij, aby zobaczyć)</summary>
-                        {!! $book->desc !!}
-                    </details>
-                </td>
+                <td><a href="{{ route('books.single', $book) }}">{{$book->title}}</a></td>
+                <td><!-- Button trigger modal -->
+<button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModalLong">
+  Zobacz opis
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Opis książki</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        {!! $book->desc !!}
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Zamknij</button>
+      </div>
+    </div>
+  </div>
+</div></td>
                 <td><a href="{{ route('books.author', $book->author->id) }}">{{ $book->author->name }}</a></td>
                 <td><a href="{{ route('books.category', $book->categories->id) }}">{{$book->categories->name}}</a></td>
-                <td>{{ $book->plus}}</td>
-                <td>{{ $book->minus}}</td>
+                <td>
+                        @foreach(DB::table('upvotes')->where('books_id', $book->id)->get() as $vote)
+                            <strong>{{ $vote->vote }}</strong>
+                        @endforeach
+                </td>
+                <td>
+                        @foreach(DB::table('down_votes')->where('books_id', $book->id)->get() as $vote)
+                            <strong>{{ $glosy += $vote->vote }}</strong>
+                        @endforeach
+                </td>
                 <td><a href="{{ route('books.edit', $book) }}" class="btn btn-success">Edytuj</a></td>
                 <form action="{{ route('books.destroy', $book) }}" method="post">
                     {{ csrf_field() }}
