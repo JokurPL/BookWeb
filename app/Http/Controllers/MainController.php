@@ -22,13 +22,13 @@ class MainController extends Controller
 
 
     public function index() {
-        $books = Books::paginate(15);
+        $books = Books::paginate(5);
         return view('books.welcome', compact('books'));
     }
 
     public function regulamin()
     {
-        $regulamin = Regulamin::first();
+        $regulamin = Regulamin::take(1)->get();
         return view('books.regulamin.regulamin', compact('regulamin'));
     }
 

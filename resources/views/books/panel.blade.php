@@ -10,7 +10,8 @@
         <h1 style="font-size: 4rem">Książki <a class="btn btn-primary btn-sm" href="{{ route('addbook') }}">Dodaj</a></h1>
         <hr>
     </div>
-    <table class="table table-responsive table-inverse text-center table-striped table-bordered" id="tabelka">
+    <div class="table-responsive">
+    <table class="table table-inverse table-dark text-center table-striped table-bordered" id="tabelka">
         <thead>
         <tr>
             <th class="text-center">ID</th>
@@ -30,17 +31,17 @@
             <tr>
                 <th class="text-center">{{$book->id}}</th>
                 <td><a href="{{ route('books.single', $book) }}">{{$book->title}}</a></td>
-                <td><!-- Button trigger modal -->
-<button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModalLong">
+                <td class="text-dark"><!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#m{{$book->id}}">
   Zobacz opis
 </button>
 
 <!-- Modal -->
-<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+<div class="modal fade" id="m{{$book->id}}" tabindex="-1" role="dialog" aria-labelledby="x{{$book->id}}" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Opis książki</h5>
+        <h5 class="modal-title" id="x{{$book->id}}">Opis książki pt. "{{$book->title}}".</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -53,7 +54,8 @@
       </div>
     </div>
   </div>
-</div></td>
+</div>
+                </td>
                 <td><a href="{{ route('books.author', $book->author->id) }}">{{ $book->author->name }}</a></td>
                 <td><a href="{{ route('books.category', $book->categories->id) }}">{{$book->categories->name}}</a></td>
                 <td>
@@ -77,12 +79,14 @@
         @endforeach
         </tbody>
     </table>
+    </div>
         <nav class="mx-auto text-center"  aria-label="pagination">
             {{$books->links('vendor.pagination.bootstrap-4')}}
         </nav>
     <h1 style="font-size: 4rem" class="text-center">Kategorie <a class="btn btn-primary btn-sm" href="{{ route('books.cat_add') }}">Dodaj</a></h1>
     <hr>
-    <table class="table table-responsive table-inverse text-center table-striped table-bordered" id="tabelka">
+    <div class="table-responsive">
+    <table class="table table-dark table-inverse text-center table-striped table-bordered" id="tabelka">
         <thead>
          <tr>
              <th class="text-center">ID</th>
@@ -105,13 +109,14 @@
             </tr>
         @endforeach
         </tbody>
-    </table>
+    </table></div>
         <nav class="mx-auto text-center"  aria-label="pagination">
             {{$categories->links('vendor.pagination.bootstrap-4')}}
         </nav>
     <h1 style="font-size: 4rem" class="text-center">Autorzy <a class="btn btn-primary btn-sm" href="{{ route('books.author_add') }}">Dodaj</a></h1>
     <hr>
-    <table class="table table-responsive table-inverse text-center table-striped table-bordered" id="tabelka">
+    <div class="table-responsive">
+    <table class="table table-dark table-inverse text-center table-striped table-bordered" id="tabelka">
         <thead>
         <tr>
             <th class="text-center">ID</th>
@@ -134,13 +139,14 @@
             </tr>
         @endforeach
         </tbody>
-    </table>
+    </table></div>
         <nav class="mx-auto text-center"  aria-label="pagination">
             {{$author->links('vendor.pagination.bootstrap-4')}}
         </nav>
         <h1 style="font-size: 4rem" class="text-center">Komentarze</h1>
         <hr>
-        <table class="table table-responsive table-inverse text-center table-striped table-bordered" id="tabelka">
+        <div class="table-responsive">
+        <table class="table table-dark table-inverse text-center table-striped table-bordered" id="tabelka">
             <thead>
             <tr>
                 <th class="text-center">ID</th>
@@ -165,7 +171,7 @@
 
             </tbody>
 
-        </table>
+        </table></div>
         <nav class="mx-auto text-center"  aria-label="pagination">
             {{$comments->links('vendor.pagination.bootstrap-4')}}
         </nav>
