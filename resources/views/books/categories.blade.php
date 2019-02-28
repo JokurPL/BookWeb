@@ -8,6 +8,14 @@
         </p>
     @endforeach
     <div class="row mx-auto">
+    @if(count($books) <= 0)
+    <div class="card text-center mx-auto">
+        <div class="card-body">
+            <h3>Brak książek o takiej kategorii.</h3>
+            <a href="{{ route('home') }}">Powrót do strony głównej</a>
+        </div>
+    </div>
+    @else
     @foreach($books as $book)
 
         <div class="card float-left mx-auto post" style="width: 20rem; margin: 1rem;">
@@ -20,6 +28,7 @@
         </div>
 
     @endforeach
+    @endif
     </div>
     </div>
 @endsection

@@ -69,60 +69,85 @@
                     
                     @if($u_votes > 0)
                     <h4 class="text-center"><strong>{{ round(($u_votes/($d_votes + $u_votes))*100)}}%</strong> osób ta książka się podobała</h4>
-                <div class="progress" style="height: 3rem;">
+                    <div class="progress" style="height: 3rem;">
 
                     <div class="progress-bar" style="width: {{ round(($u_votes/($d_votes + $u_votes))*100)}}%;" role="progressbar" aria-valuenow="{{round(($u_votes/($d_votes + $u_votes))*100)}}" aria-valuemin="0" aria-valuemax="100">{{round(($u_votes/($d_votes + $u_votes))*100)}}%</div>
-                </div>
+                    </div>
                     @elseif($u_votes === 0 && $d_votes > 0)
                     <h4 class="text-center"><strong>0%</strong> osób ta książka się podobała</h4>
-                <div class="progress" style="height: 3rem;">
+                    <div class="progress" style="height: 3rem;">
 
                     <div class="progress-bar" style="width: 0%;" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
-                </div>
+                    </div>
                     @else 
                     <h4 class="text-center"><strong>Brak wystarczających ilości danych</h4>
-                <div class="progress" style="height: 3rem;">
+                    <div class="progress" style="height: 3rem;">
 
                     <div class="progress-bar" style="width: 0%;" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
+                    </div>
                     @endif
-                @if(!Auth::guest())
-                @if(Auth::user()->roles[0]->name === 'Administrator' || Auth::user()->roles[0]->name === 'Redaktor')
-                <div style="text-align: right; margin: 1rem;">
-                    <a style="margin: 1rem; float: left;" href="{{ route('books.edit', $book) }}" class="btn btn-info text-right btn-lg">Edytuj</a>
-                    <form action="{{ route('books.destroy', $book) }}" method="post">
-                        {{ csrf_field() }}
-                        <input type="hidden" name="_method" value="DELETE" >
-                        <button style="margin: 1rem; cursor: pointer;" class="btn btn-danger text-right btn-lg">Usuń</button>
-                    </form>
-                </div>
+                    @if(!Auth::guest())
+                    @if(Auth::user()->roles[0]->name === 'Administrator' || Auth::user()->roles[0]->name === 'Redaktor')
+                    <div style="text-align: right; margin: 1rem;">
+                        <a style="margin: 1rem; float: left;" href="{{ route('books.edit', $book) }}" class="btn btn-info text-right btn-lg">Edytuj</a>
+                        <form action="{{ route('books.destroy', $book) }}" method="post">
+                            {{ csrf_field() }}
+                            <input type="hidden" name="_method" value="DELETE" >
+                            <button style="margin: 1rem; cursor: pointer;" class="btn btn-danger text-right btn-lg">Usuń</button>
+                        </form>
+                    </div>
 
-                @endif
-                @endif
-                </div>
-            </div>
-                @else
+                    @endif
+                    @endif
+                    </div>
+                    </div>
+                    @else
+                    
                     <div class="d-inline-block" style="margin-right: 1rem">
                         <button data-toggle="tooltip" data-placement="left" title="Chcesz zagłosować? Zaloguj lub zajerestruj się!" class="btn btn-success disabled"><p><b><i class="material-icons">thumb_up</i></b></p> {{ $l_uvotes }}</button>
                     </div>
                     <div class="d-inline-block" style="margin-right: 1rem">
                         <button data-toggle="tooltip" data-placement="left" title="Chcesz zagłosować? Zaloguj lub zajerestruj się!" class="btn btn-danger disabled"><p><b><i class="material-icons">thumb_up</i></b></p> {{ $l_dvotes }}</button>
                     </div>
+      
+                    @if($l_uvotes > 0)
+                    <h4 class="text-center"><strong>{{ round(($l_uvotes/($l_dvotes + $l_uvotes))*100)}}%</strong> osób ta książka się podobała</h4>
+                    <div class="progress" style="height: 3rem;">
 
-                @endif
+                        <div class="progress-bar" style="width: {{ round(($l_uvotes/($l_dvotes + $l_uvotes))*100)}}%;" role="progressbar" aria-valuenow="{{round(($l_uvotes/($l_dvotes + $l_uvotes))*100)}}" aria-valuemin="0" aria-valuemax="100">{{round(($l_uvotes /($l_dvotes + $l_uvotes))*100)}}%</div>
+                    </div></div></div>
+                    @elseif($l_uvotes === 0 && $l_dvotes > 0)
+                    <h4 class="text-center"><strong>0%</strong> osób ta książka się podobała</h4>
+                    <div class="progress" style="height: 3rem;">
+
+                    <div class="progress-bar" style="width: 0%;" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
+                    </div></div></div>
+                    @else 
+                    <h4 class="text-center"><strong>Brak wystarczających ilości danych</h4>
+                    <div class="progress" style="height: 3rem;">    
+                    <div class="progress-bar" style="width: 0%;" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div></div></div>
+                    @endif
+                    @endif
                 
             </div>
             <hr>
             <h1>Komentarze</h1>
             <hr>
+            
+            @if(count($comments) <= 0)
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                <strong>Brak komentarzy.</strong>
+            </div>
+            @else
             @foreach($comments as $value)
             <blockquote style="padding: 1rem;" class="blockquote border border-primary">
                 <p class="mb-0" style="font-size: 1rem; text-align: left">{{ $value->comment}}</p>
                 <footer class="blockquote-footer text-left"><a href="{{ route('books.user', $value->user) }}">{{ $value->user->name}}</a></footer>
                 <span class="text-secondary" style="font-size: 70%;">Dodany: <b>{{$value->created_at}}</b></span>
             </blockquote>
-
             @endforeach
+            @endif
         <nav class="mx-auto" aria-label="Page navigation example">
             {{$comments->links('vendor.pagination.bootstrap-4')}}
         </nav>

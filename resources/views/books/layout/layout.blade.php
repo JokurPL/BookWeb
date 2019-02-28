@@ -53,14 +53,15 @@
                             </div>
                         @endif
                     </li>
+                @elseif(Auth::user())
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('books.user', Auth::user()) }}">{{  Auth::user()->name  }}</a>
+                    </li>
                 @endif
             @endif
             @if(Auth::guest())
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('login') }}">Zaloguj się</a>
-                </li>
-                <li class="nav-item ">
-                    <a class="nav-link" href="#">Zajerestruj się</a>
+                    <a class="nav-link" href="{{ route('login') }}">Zaloguj się lub zarejestruj się</a>
                 </li>
 
             @else
