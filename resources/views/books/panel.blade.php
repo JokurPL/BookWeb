@@ -59,14 +59,12 @@
                 <td><a href="{{ route('books.author', $book->author->id) }}">{{ $book->author->name }}</a></td>
                 <td><a href="{{ route('books.category', $book->categories->id) }}">{{$book->categories->name}}</a></td>
                 <td>
-                        @foreach(DB::table('upvotes')->where('books_id', $book->id)->get() as $vote)
-                            <strong>{{ $vote->vote }}</strong>
-                        @endforeach
+                       
+                            <strong>{{ count(DB::table('upvotes')->where('books_id', $book->id)->get()) }}</strong>
+                        
                 </td>
                 <td>
-                        @foreach(DB::table('down_votes')->where('books_id', $book->id)->get() as $vote)
-                            <strong>{{ $glosy += $vote->vote }}</strong>
-                        @endforeach
+                            <strong>{{ count(DB::table('down_votes')->where('books_id', $book->id)->get()) }}</strong>
                 </td>
                 <td><a href="{{ route('books.edit', $book) }}" class="btn btn-success">Edytuj</a></td>
                 <form action="{{ route('books.destroy', $book) }}" method="post">

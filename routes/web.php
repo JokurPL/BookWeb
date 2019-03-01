@@ -21,6 +21,26 @@ Route::get('/regulamin', [
     'uses' => 'MainController@regulamin'
 ]);
 
+Route::get('/autorzy', [
+    'as' => 'books.authors',
+    'uses' => 'MainController@authors'
+]);
+
+Route::get('/autorzy/szukaj/{query}', [
+    'as' => 'books.authors_find',
+    'uses' => 'MainController@authors_find'
+]);
+
+Route::get('/kategorie', [
+    'as' => 'books.cats',
+    'uses' => 'MainController@cats'
+]);
+
+Route::get('/kategorie/{query}', [
+    'as' => 'books.cats_find',
+    'uses' => 'MainController@cats_find'
+]);
+
 Route::group([
     'middleware' => 'roles',
     'roles' => 'Administrator',
@@ -187,6 +207,8 @@ Route::get('/uzytkownik/{user}', [
     'as' => 'books.user',
     'uses' => 'UserController@user'
 ]);
+
+
 
 Route::post('/zajerestruj-sie/', [
     'as' => 'books.register',

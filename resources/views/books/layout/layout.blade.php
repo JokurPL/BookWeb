@@ -28,15 +28,11 @@
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('books.regulamin') }}">Regulamin</a>
             </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Kategorie
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    @foreach($cate = DB::table('categories')->get() as $cat)
-                        <a class="dropdown-item" href="{{ route('books.category', $cat->id) }}">{{$cat->name}}</a>
-                    @endforeach
-                </div>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('books.cats') }}">Kategorie</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('books.authors') }}">Autorzy</a>
             </li>
 
         </ul>

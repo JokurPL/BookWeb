@@ -32,6 +32,18 @@ class MainController extends Controller
         return view('books.regulamin.regulamin', compact('regulamin'));
     }
 
+    public function authors() {
+        $authors = DB::table('authors')->orderBy('name','asc')->paginate(10);
+
+        return view('books.authors_all', compact('authors'));
+    }
+
+    public function cats() {
+        $cats = DB::table('categories')->orderBy('name','asc')->paginate(10);
+
+        return view('books.categories_all', compact('cats'));
+    }
+
     public function single(Books $book) {
         $upvote = DB::table('upvotes')->where('books_id', $book->id)->get();
         $downvote = DB::table('down_votes')->where('books_id', $book->id)->get();
