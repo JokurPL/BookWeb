@@ -32,7 +32,7 @@
         <div class="row mx-auto">
             @foreach($books as $book)
             <div class="card float-left mx-auto post" style="width: 20rem; margin: 1rem;">
-                <img class="card-img" width="50px" src="../uploads/{{$book->img}}" alt="Card image cap">
+                <img class="card-img img-fluid" src="../uploads/{{$book->img}}" alt="{{$book->img}}">
                 <div class="card-body text-center">
                     <h4 class="card-title ">{{$book->title}}</h4><a href="{{route('books.category', $book->categories->id)}}" class="btn btn-outline-info">{{$book->categories->name}}</a> <a href="{{ route('books.author', $book->author->id) }}"  class="btn btn-outline-secondary" style="margin: 2%;">{{$book->author->name}}</a>
                     </p>

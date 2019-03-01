@@ -26,7 +26,7 @@ Route::get('/autorzy', [
     'uses' => 'MainController@authors'
 ]);
 
-Route::get('/autorzy/szukaj/{query}', [
+Route::get('/autorzy/szukaj', [
     'as' => 'books.authors_find',
     'uses' => 'MainController@authors_find'
 ]);
@@ -36,7 +36,7 @@ Route::get('/kategorie', [
     'uses' => 'MainController@cats'
 ]);
 
-Route::get('/kategorie/{query}', [
+Route::get('/kategorie/szukaj', [
     'as' => 'books.cats_find',
     'uses' => 'MainController@cats_find'
 ]);

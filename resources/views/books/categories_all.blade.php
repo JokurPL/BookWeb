@@ -4,7 +4,7 @@
         <br>
         <nav class="navbar navbar-light bg-light">
         <h1>Wszystkie kategorie:</h1>
-        <form class="form-inline">
+        <form class="form-inline" method="get" action="{{ route('books.cats_find') }}">
             <input class="form-control mr-sm-2" type="search" placeholder="Szukaj kategorii..." aria-label="Search">
             <button class="btn btn-outline-dark my-2 my-sm-0" type="submit">Szukaj</button>
         </form>

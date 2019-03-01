@@ -38,10 +38,22 @@ class MainController extends Controller
         return view('books.authors_all', compact('authors'));
     }
 
+    public function authors_find(Request $request) {
+        $query = $request->get('query');
+        $wynik = DB::table('authors')->where('name', 'like', '%' . $query . '%')->get();
+        return view('books.authors_find', compact('query', 'wynik'));
+    }
+
     public function cats() {
         $cats = DB::table('categories')->orderBy('name','asc')->paginate(10);
 
         return view('books.categories_all', compact('cats'));
+    }
+
+    public function cats_find(Request $request) {
+        $query = $request->get('query');
+        $wynik = DB::table('categories')->where('name', 'like', '%' . $query . '%')->get();
+        return view('books.cats_find', compact('query', 'wynik'));
     }
 
     public function single(Books $book) {
