@@ -1,17 +1,20 @@
 @extends('books.layout.layout')
 @section('content')
     <div class="container">
-        <form method="post" action="{{ route('books.save_edit_regulamin', $regulamin) }}">
+    @foreach($content as $value)
+        <form method="post" action="{{ route('books.save_edit_regulamin') }}">
             {{ csrf_field() }}
             <input type="hidden" name="_method" value="PUT">
-            <input type="hidden" name="id" value="{{$regulamin->id}}">
+            <input type="hidden" name="id" value="{{$value->id}}">
             <div class="form-group">
-                <label for="content">Opis książki</label>
-                <textarea  class="form-control" name="content" id="content" placeholder="Wpisz regulamin">{{ $regulamin->content }}</textarea>
+                <br>
+                <label for="content"><h1>Treść regulaminu</h1><hr><label>
+                <textarea  name="content" id="content" placeholder="Wpisz regulamin">{{ $value->content }}</textarea>
             </div>
             <button type="submit" style="cursor: pointer;" class="btn btn-success">Edytuj</button>
         </form>
     </div>
+    @endforeach
 @endsection
 @section('scripts')
     <script type="text/javascript" src="{{url('../js/languages/pl.js')}}"></script>

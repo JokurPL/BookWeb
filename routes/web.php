@@ -61,7 +61,7 @@ Route::group([
         'uses' => 'HomeController@edit_regulamin'
     ]);
 
-    Route::put('/regulamin/edytuj/zapisz/', [
+    Route::put('/regulamin/edytuj/zapisz', [
         'as' => 'books.save_edit_regulamin',
         'uses' => 'HomeController@save_edit_regulamin'
     ]);
@@ -159,6 +159,12 @@ Route::group([
         'as' => 'books.author_destroy'
     ]);
 
+    Route::get('/regulamin/edytuj/{regulamin}', [
+        'as' => 'books.regulamin_edit',
+        'uses' => 'MainController@regulamin_edit'
+    ]);
+    
+
 });
 
 
@@ -210,7 +216,7 @@ Route::get('/uzytkownik/{user}', [
 
 
 
-Route::post('/zajerestruj-sie/', [
+Route::post('/zajerestruj-sie', [
     'as' => 'books.register',
     'uses' => 'RegController@index'
 ]);

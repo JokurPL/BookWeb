@@ -32,6 +32,12 @@ class MainController extends Controller
         return view('books.regulamin.regulamin', compact('regulamin'));
     }
 
+    public function regulamin_edit(Regulamin $regulamin) {
+        $content = DB::table('regulamins')->where('id', $regulamin->id)->take(1)->get();
+
+        return view('books.regulamin.edit_regulamin', compact('content'));
+    }
+
     public function authors() {
         $authors = DB::table('authors')->orderBy('name','asc')->paginate(10);
 

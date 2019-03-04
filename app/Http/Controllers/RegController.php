@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Roles;
 use Illuminate\Http\Request;
+use App\User;
+use Illuminate\Support\Facades\DB;
+
 
 class RegController extends Controller
 {
@@ -16,7 +19,6 @@ class RegController extends Controller
     public function index(Request $request)
     {
         $role = Roles::where('name', 'Użytkownik')->first();
-
         $user = new \App\User();
         $user->email = $request->email;
         $user->password = bcrypt($request->password);
@@ -24,6 +26,6 @@ class RegController extends Controller
         $user->save();
         $user->roles()->attach($role);
 
-        return redirect()->route('login');
+        return redirect()->route('home');
     }
 }

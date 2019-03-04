@@ -11,7 +11,6 @@
                     <div class="form-group">
                         <label for="exampleInputEmail1"><h4>Adres e-mail</h4></label>
                         <input type="email" name="email" required class="form-control" id="email" aria-describedby="emailHelp" placeholder="Wpisz swój e-mail">
-                        <small id="emailHelp" class="form-text text-muted">Pamiętaj, aby e-mail był prawdziwy!</small>
                     </div>
                     <div class="form-group">
                         <label for="password"><h4>Hasło</h4></label>
@@ -60,12 +59,12 @@
                     <div class="form-check">
                         <label class="form-check-label">
                             <input type="checkbox" required class="form-check-input">
-                            Zapoznałem się z <a href>regulaminem</a>.
+                            Zapoznałem się z <a href="{{route('books.regulamin')}}">regulaminem</a>.
                         </label>
                     </div>
 
                     <input type="hidden" name="user_id" value="{{ \App\User::all()->last()->id+1 }}">
-                    
+                    <br>
                     <button type="submit" style="cursor: pointer;" class="btn btn-lg btn-primary">Zarejestruj się</button>
                 </form>
             </div>

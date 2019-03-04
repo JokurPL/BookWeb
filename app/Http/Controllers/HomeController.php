@@ -36,12 +36,7 @@ class HomeController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function edit_regulamin(Regulamin $regulamin)
-    {
-        return view('books.regulamin.edit_regulamin', compact('regulamin'));
-    }
-
-    public function save_edit_regulamin(Request $request, Regulamin $regulamin)
+    public function save_edit_regulamin(Request $request)
     {
         $reg = Regulamin::find($request->id);
         $reg->content = $request->content;
