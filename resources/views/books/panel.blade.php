@@ -10,6 +10,34 @@
         <h1 style="font-size: 4rem">Książki <a class="btn btn-primary btn-sm" href="{{ route('addbook') }}">Dodaj</a></h1>
         <hr>
     </div>
+
+    <nav id="navbar-example2" class="navbar">
+  <h1 class="navbar-brand" href="#">Panel</h1>
+  <ul class="nav nav-pills">
+    <li class="nav-item">
+      <a class="nav-link" href="#fat">@fat</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#mdo">@mdo</a>
+    </li>
+  </ul>
+</nav>
+<div data-spy="scroll" data-target="#navbar-example2" data-offset="0">
+  <h4 id="fat">Książki</h4>
+  <p><a class="btn btn-lg">Zobacz wszystkie książki</a></p>
+  <h4 id="mdo">@mdo</h4>
+  <p>...</p>
+  <h4 id="one">one</h4>
+  <p>...</p>
+  <h4 id="two">two</h4>
+  <p>...</p>
+  <h4 id="three">three</h4>
+  <p>...</p>
+</div>
+
+
+
+
     <div class="table-responsive">
     <table class="table table-inverse table-dark text-center table-striped table-bordered" id="tabelka">
         <thead>
