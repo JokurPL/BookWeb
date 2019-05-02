@@ -139,4 +139,10 @@ class MainController extends Controller
 
         return redirect()->route('books.panel_admina');
     }
+
+    public function panel_books() {
+        $books = Books::paginate(10);   
+        return view('books.panel_books', compact('books'));
+    }
+
 }

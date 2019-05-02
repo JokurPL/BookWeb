@@ -133,6 +133,11 @@ Route::group([
         'as' => 'books.panel_admina',
         'uses' => 'MainController@panel'
     ]);
+
+    Route::get('/panel-administratora/ksiazki', [
+        'as' => 'books.panel_books',
+        'uses' => 'MainController@panel_books'
+    ]);
 // -----------------K-A-T-E-G-O-R-I-A--------------------
     Route::get('/autor/dodaj', [
         'uses' => 'HomeController@author_add',

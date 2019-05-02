@@ -27,7 +27,7 @@
             <label for="author_id">Autor [Aktualny: <b>{{ $book->author->name }}</b>]</label>
             <select name="author_id" class="form-control" id="author_id">
                 @foreach($authors as $author)
-                    <option @if($author->id === $book->categories->id) selected @endif name="author_id" value="{{$author->id}}">{{$author->name}}</option>
+                    <option @if($author->id === $book->author->id) selected @endif name="author_id" value="{{$author->id}}">{{$author->name}}</option>
                 @endforeach
             </select>
         </div>
