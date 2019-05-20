@@ -122,7 +122,8 @@ class HomeController extends Controller
 
     public function book_destroy(Books $book)
     {
-        $book->delete();
+        $comments = DB::table('comments')->where('books_id', $book->id)->delete();
+        $book->delete('cascade');
         return redirect()->route('home');
     }
 

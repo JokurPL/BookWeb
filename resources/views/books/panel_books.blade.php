@@ -46,7 +46,7 @@
                                                 <span aria-hidden="true">&times;</span>
                                                 </button>
                                             </div>
-                                        <div class="modal-body">
+                                        <div class="modal-body text-dark">
                                             {!! $book->desc !!} 
                                         </div>
                                         <div class="modal-footer">
@@ -61,7 +61,13 @@
                         <td class="align-middle">{{ count(DB::table('upvotes')->where('books_id', $book->id)->get()) }}</td>
                         <td class="align-middle">{{ count(DB::table('down_votes')->where('books_id', $book->id)->get()) }}</td>
                         <td class="align-middle"><a href="{{ route('books.edit', $book) }}" class="btn btn-success">Edytuj</a></td>
-                        <td class="align-middle"></td>
+                        <td class="align-middle">
+                        <form action="{{ route('books.destroy', $book) }}" method="post">
+                            {{ csrf_field() }}
+                            <input type="hidden" name="_method" value="DELETE" >
+                            <button class="btn btn-danger">Usuń</button>
+                        </form>
+                        </td>
                     </tr>
                 @endforeach
             </tbody>

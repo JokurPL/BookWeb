@@ -122,7 +122,7 @@ class MainController extends Controller
         $glosy = 0;
         $up = Upvote::all();
         $down = DownVote::all();
-        $books = Books::paginate(10);
+        $books = Books::all();
         $categories = Categories::paginate(10);
         $author = Author::paginate(10);
         $comments = Comments::paginate(10);
@@ -136,7 +136,6 @@ class MainController extends Controller
     public function destroy_comment(Comments $comment)
     {
         $comment->delete();
-
         return redirect()->route('books.panel_admina');
     }
 

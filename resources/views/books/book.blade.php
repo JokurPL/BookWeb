@@ -80,7 +80,7 @@
                     <div class="progress-bar" style="width: 0%;" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
                     </div>
                     @else 
-                    <h4 class="text-center"><strong>Brak wystarczających ilości danych</h4>
+                    <h4 class="text-center"><strong>Brak wystarczających ilości danych</strong></h4>
                     <div class="progress" style="height: 3rem;">
 
                     <div class="progress-bar" style="width: 0%;" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
@@ -123,7 +123,7 @@
                     <div class="progress-bar" style="width: 0%;" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
                     </div></div></div>
                     @else 
-                    <h4 class="text-center"><strong>Brak wystarczających ilości danych</h4>
+                    <h4 class="text-center"><strong>Brak wystarczających ilości danych</strong></h4>
                     <div class="progress" style="height: 3rem;">    
                     <div class="progress-bar" style="width: 0%;" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
                     </div></div></div>
