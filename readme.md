@@ -1,6 +1,6 @@
 # BookWeb
 ### Ogólny opis 
-Aplikacja webowa tworzona w celu ćwiczeń. Ma ona pełnić funkcję platformy o książkach, czyli znajdować się będą recenzję, rekomendacje i opinie użytkowników zawarte w komentarzach.
+Aplikacja webowa tworzona w celu ćwiczeń. Ma ona pełnić funkcję platformy o książkach, gdzie znajdować się będą recenzję, rekomendacje i opinie użytkowników zawarte w komentarzach.
 Strona posiada system logowania oraz ocen.
 
 # Zdjęcia
